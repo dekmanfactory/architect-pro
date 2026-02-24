@@ -384,15 +384,17 @@ async def generate_hwpx(req: GenerateRequest):
         with open(temp_output, 'rb') as f:
             hwpx_bytes = f.read()
 
-        # 파일명 생성
+        # 파일명 생성 (한국어 파일명은 RFC 5987 형식으로 인코딩)
         safe_date = date_str.replace('. ', '-').replace('.', '')
         filename = f"{req.preset}_{req.model}_{safe_date}.hwpx"
+        from urllib.parse import quote
+        filename_encoded = quote(filename)
 
         return Response(
             content=hwpx_bytes,
             media_type="application/vnd.hancom.hwpx+zip",
             headers={
-                "Content-Disposition": f'attachment; filename="{filename}"'
+                "Content-Disposition": f"attachment; filename*=UTF-8''{filename_encoded}"
             }
         )
 
