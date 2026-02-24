@@ -251,11 +251,11 @@ export default function ProposalWorkbench({
             } else {
                 const error = await response.json();
                 console.error("API Error:", error);
-                alert(`다운로드 실패: ${error.error || '알 수 없는 오류'}`);
+                alert(`다운로드 실패: ${error.detail || error.error || '알 수 없는 오류'}`);
             }
         } catch (e) {
             console.error("Download failed", e);
-            alert("다운로드 중 오류가 발생했습니다.");
+            alert(`다운로드 중 오류가 발생했습니다: ${e}`);
         }
     };
 
@@ -301,11 +301,11 @@ export default function ProposalWorkbench({
             } else {
                 const error = await response.json();
                 console.error("API Error:", error);
-                alert(`다운로드 실패: ${error.error || '알 수 없는 오류'}`);
+                alert(`다운로드 실패: ${error.detail || error.error || '알 수 없는 오류'}`);
             }
         } catch (e) {
             console.error("Full download failed", e);
-            alert("파일 생성 중 오류가 발생했습니다.");
+            alert(`파일 생성 중 오류가 발생했습니다: ${e}`);
         }
     };
 
