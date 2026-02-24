@@ -249,9 +249,10 @@ export default function ProposalWorkbench({
                 a.click();
                 a.remove();
             } else {
-                const error = await response.json();
-                console.error("API Error:", error);
-                alert(`다운로드 실패: ${error.detail || error.error || '알 수 없는 오류'}`);
+                const text = await response.text();
+                console.error("API Error:", text);
+                try { const err = JSON.parse(text); alert(`다운로드 실패: ${err.detail || err.error || text}`); }
+                catch { alert(`다운로드 실패 (${response.status}): ${text.slice(0, 200)}`); }
             }
         } catch (e) {
             console.error("Download failed", e);
@@ -299,9 +300,10 @@ export default function ProposalWorkbench({
                 a.click();
                 a.remove();
             } else {
-                const error = await response.json();
-                console.error("API Error:", error);
-                alert(`다운로드 실패: ${error.detail || error.error || '알 수 없는 오류'}`);
+                const text = await response.text();
+                console.error("API Error:", text);
+                try { const err = JSON.parse(text); alert(`다운로드 실패: ${err.detail || err.error || text}`); }
+                catch { alert(`다운로드 실패 (${response.status}): ${text.slice(0, 200)}`); }
             }
         } catch (e) {
             console.error("Full download failed", e);
