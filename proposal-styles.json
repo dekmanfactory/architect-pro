@@ -1,0 +1,68 @@
+{
+  "styles": {
+    "level1": {
+      "symbol": "□",
+      "font": "KoPubWorld바탕체 Bold",
+      "size": 16,
+      "paragraphSpaceBefore": 15,
+      "paragraphSpaceAfter": 5,
+      "align": "justify",
+      "leftMargin": 0
+    },
+    "level2": {
+      "symbol": "○",
+      "font": "KoPubWorld바탕체 Medium",
+      "size": 12,
+      "paragraphSpaceBefore": 5,
+      "paragraphSpaceAfter": 1,
+      "align": "justify",
+      "leftMargin": 10
+    },
+    "level3": {
+      "symbol": "―",
+      "font": "KoPubWorld바탕체 Light",
+      "size": 11,
+      "paragraphSpaceBefore": 3,
+      "paragraphSpaceAfter": 0,
+      "align": "justify",
+      "leftMargin": 20
+    },
+    "level4": {
+      "symbol": "※",
+      "font": "KoPubWorld돋움체 Medium",
+      "size": 10,
+      "paragraphSpaceBefore": 3,
+      "paragraphSpaceAfter": 5,
+      "align": "justify",
+      "leftMargin": 30
+    },
+    "title": {
+      "font": "KoPubWorld돋움체 Bold",
+      "size": 25,
+      "bold": true,
+      "align": "center"
+    },
+    "organization": {
+      "font": "KoPubWorld돋움체 Bold",
+      "size": 30,
+      "bold": true,
+      "align": "center"
+    },
+    "date": {
+      "font": "KoPubWorld돋움체 Light",
+      "size": 25,
+      "align": "center"
+    },
+    "table": {
+      "font": "KoPubWorld돋움체 Medium",
+      "size": 11
+    }
+  },
+  "colors": {
+    "red": "#dc2626",
+    "green": "#16a34a",
+    "blue": "#2563eb",
+    "yellow": "#eab308",
+    "black": "#000000"
+  }
+}

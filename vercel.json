@@ -1,0 +1,21 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "functions": {
+    "api/index.py": {
+      "runtime": "@vercel/python@4.5.0",
+      "maxDuration": 60,
+      "includeFiles": "skills/4_hwpx_generation/src/**,proposal-styles.json,sample-from-hangul.hwpx,assets/fonts/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/generate-hwpx",
+      "destination": "/api/index"
+    },
+    {
+      "source": "/api/health",
+      "destination": "/api/index"
+    }
+  ]
+}

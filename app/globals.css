@@ -58,11 +58,41 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
   }
-  body {
-    @apply bg-background text-foreground;
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20;
+  }
+
+  .custom-scrollbar-light::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar-light::-webkit-scrollbar-track {
+    @apply bg-slate-50;
+  }
+  .custom-scrollbar-light::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full hover:bg-slate-300;
+  }
+
+  /* 뼈대 섹션용 인디고 스크롤바 (더 눈에 잘 띔) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.5);
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.7);
   }
 }

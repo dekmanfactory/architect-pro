@@ -9,8 +9,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "GongGong HWPX | AI 제안서 아키텍트",
+  description: "최신 AI 모델 7종을 활용한 HWPX 제안서 자동 생성 플랫폼",
 };
 
 const geistSans = Geist({
