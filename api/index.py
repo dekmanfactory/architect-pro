@@ -10,6 +10,7 @@ import tempfile
 from pathlib import Path
 from typing import List
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel
 
@@ -20,6 +21,13 @@ sys.path.insert(0, str(PROJECT_ROOT / "skills" / "4_hwpx_generation" / "src"))
 from hwpx_generator import HWPXGenerator
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # --- Pydantic Models ---
