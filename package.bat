@@ -66,7 +66,8 @@ echo   [사용자 안내 - 아래 내용을 함께 전달하세요]
 echo   ──────────────────────────────────────
 echo   1. ZIP 압축 해제
 echo   2. start.bat 더블클릭
-echo      (Node.js, Python 미설치 시 자동 설치됩니다)
+echo      - 첫 실행 시 Node.js v20 LTS, Python 3.11 자동 설치
+echo      - npm 패키지, Python venv 가상환경 자동 구성
 echo   3. 브라우저에서 http://localhost:3000 접속
 echo   ──────────────────────────────────────
 echo.
