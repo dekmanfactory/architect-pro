@@ -377,7 +377,7 @@ async def generate_hwpx(req: GenerateRequest):
 
         # 3. HWPX 생성
         base_dir = str(PROJECT_ROOT)
-        gen = HWPXGenerator(base_dir=base_dir)
+        gen = HWPXGenerator(base_dir=base_dir, embed_fonts=False)
 
         # 임시 출력 파일
         fd, temp_output = tempfile.mkstemp(suffix='.hwpx')

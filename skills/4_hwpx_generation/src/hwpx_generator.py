@@ -10,7 +10,8 @@ from lxml import etree
 
 
 class HWPXGenerator:
-    def __init__(self, base_dir: str = None, styles_path: str = "proposal-styles.json"):
+    def __init__(self, base_dir: str = None, styles_path: str = "proposal-styles.json", embed_fonts: bool = True):
+        self.embed_fonts = embed_fonts
         if base_dir:
             self.base_dir = Path(base_dir)
             self.styles_path = self.base_dir / styles_path
@@ -82,6 +83,10 @@ class HWPXGenerator:
         """
         폰트 파일을 HWPX의 BinData 폴더에 임베딩하고 binary ID 반환
         """
+        # 폰트 임베딩 비활성화 시 건너뛰기
+        if not self.embed_fonts:
+            return None
+
         if font_name in self.font_embed_cache:
             return self.font_embed_cache[font_name]
 
