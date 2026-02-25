@@ -65,11 +65,9 @@ echo.
 echo   [사용자 안내 - 아래 내용을 함께 전달하세요]
 echo   ──────────────────────────────────────
 echo   1. ZIP 압축 해제
-echo   2. Node.js 설치 (https://nodejs.org) - 미설치 시
-echo   3. install.bat 더블클릭 (최초 1회)
-echo      * Python 미설치 시 자동으로 3.11 설치됩니다
-echo   4. start.bat 더블클릭
-echo   5. 브라우저에서 http://localhost:3000 접속
+echo   2. start.bat 더블클릭
+echo      (Node.js, Python 자동 설치됩니다)
+echo   3. 브라우저에서 http://localhost:3000 접속
 echo   ──────────────────────────────────────
 echo.
 pause
