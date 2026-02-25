@@ -30,6 +30,25 @@ if errorlevel 1 (
 )
 for /f "tokens=*" %%i in ('python --version') do echo [확인] %%i
 
+:: Python 버전 체크 (3.10~3.12 권장)
+for /f "tokens=2 delims= " %%v in ('python --version 2^>^&1') do set PYVER=%%v
+for /f "tokens=1,2 delims=." %%a in ("%PYVER%") do (
+    set PYMAJOR=%%a
+    set PYMINOR=%%b
+)
+if %PYMINOR% GTR 12 (
+    echo.
+    echo [경고] Python %PYVER% 은 너무 최신 버전입니다.
+    echo        일부 패키지(lxml)가 호환되지 않을 수 있습니다.
+    echo        Python 3.12를 권장합니다: https://www.python.org/downloads/release/python-3129/
+    echo.
+    set /p "CONTINUE=계속 진행하시겠습니까? (Y/N): "
+    if /i not "!CONTINUE!"=="Y" (
+        pause
+        exit /b 1
+    )
+)
+
 echo.
 echo [1/3] Node.js 패키지 설치 중...
 echo.
@@ -58,11 +77,19 @@ if not exist "venv" (
 echo.
 echo [3/3] Python 패키지 설치 중 (venv)...
 echo.
-call venv\Scripts\pip install lxml python-hwpx
+call venv\Scripts\pip install --only-binary=:all: lxml python-hwpx
 if errorlevel 1 (
-    echo [오류] pip install 실패
-    pause
-    exit /b 1
+    echo.
+    echo [재시도] 바이너리 wheel 설치 실패, 호환 버전으로 재시도...
+    call venv\Scripts\pip install "lxml>=5.0,<7.0" python-hwpx
+    if errorlevel 1 (
+        echo.
+        echo [오류] pip install 실패
+        echo        Python 3.12 설치를 권장합니다.
+        echo        https://www.python.org/downloads/release/python-3129/
+        pause
+        exit /b 1
+    )
 )
 
 echo.
