@@ -66,7 +66,7 @@ echo   [사용자 안내 - 아래 내용을 함께 전달하세요]
 echo   ──────────────────────────────────────
 echo   1. ZIP 압축 해제
 echo   2. start.bat 더블클릭
-echo      (Node.js, Python 자동 설치됩니다)
+echo      (Node.js, Python 미설치 시 자동 설치됩니다)
 echo   3. 브라우저에서 http://localhost:3000 접속
 echo   ──────────────────────────────────────
 echo.
