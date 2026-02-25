@@ -31,7 +31,7 @@ if errorlevel 1 (
 for /f "tokens=*" %%i in ('python --version') do echo [확인] %%i
 
 echo.
-echo [1/2] Node.js 패키지 설치 중...
+echo [1/3] Node.js 패키지 설치 중...
 echo.
 call npm install
 if errorlevel 1 (
@@ -41,12 +41,28 @@ if errorlevel 1 (
 )
 
 echo.
-echo [2/2] Python 패키지 설치 중...
+echo [2/3] Python 가상환경(venv) 생성 중...
 echo.
-pip install lxml python-hwpx
+if not exist "venv" (
+    python -m venv venv
+    if errorlevel 1 (
+        echo [오류] 가상환경 생성 실패
+        pause
+        exit /b 1
+    )
+    echo [확인] venv 가상환경 생성 완료
+) else (
+    echo [확인] venv 가상환경이 이미 존재합니다
+)
+
+echo.
+echo [3/3] Python 패키지 설치 중 (venv)...
+echo.
+call venv\Scripts\pip install lxml python-hwpx
 if errorlevel 1 (
-    echo [경고] pip install 실패 - 다른 Python 경로로 재시도...
-    python -m pip install lxml python-hwpx
+    echo [오류] pip install 실패
+    pause
+    exit /b 1
 )
 
 echo.
@@ -55,9 +71,8 @@ echo   설치 완료!
 echo ============================================================
 echo.
 echo   다음 단계:
-echo   1. .env.local 파일에 API 키를 입력하세요
-echo   2. start.bat 을 더블클릭하여 서버를 시작하세요
-echo   3. 브라우저에서 http://localhost:3000 접속
+echo   1. start.bat 을 더블클릭하여 서버를 시작하세요
+echo   2. 브라우저에서 http://localhost:3000 접속
 echo.
 echo   자세한 내용은 INSTALL.md 를 참고하세요.
 echo ============================================================
