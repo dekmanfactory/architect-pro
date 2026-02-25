@@ -217,6 +217,9 @@ export default function ProposalWorkbench({
         a.remove();
     };
 
+    // Vercel → Python 서버리스, 로컬 → Next.js Python subprocess
+    const hwpxApiUrl = process.env.NEXT_PUBLIC_VERCEL ? "/api/generate-hwpx" : "/api/hwpx/generate";
+
     const handleDownloadIndividual = async (id: string) => {
         const section = sections.find(s => s.id === id);
         if (!section || !contents[id]) return;
@@ -226,7 +229,7 @@ export default function ProposalWorkbench({
         const modelName = modelId.replace(/-/g, '_');
 
         try {
-            const response = await fetch("/api/generate-hwpx", {
+            const response = await fetch(hwpxApiUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -274,7 +277,7 @@ export default function ProposalWorkbench({
         const timestamp = new Date().toLocaleDateString("ko-KR").replace(/\. /g, '-').replace(/\./g, '');
 
         try {
-            const response = await fetch("/api/generate-hwpx", {
+            const response = await fetch(hwpxApiUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
